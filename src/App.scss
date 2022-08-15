@@ -1,0 +1,55 @@
+@use './styles/base/resets';
+@use './styles/abstracts/' as *;
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+a,
+button {
+  font-family: $roboto;
+  font-weight: 400;
+}
+
+body {
+  background: $background;
+  color: $text-primary;
+  font-family: $roboto;
+}
+
+.container {
+  grid-template-columns: 1fr 13fr 1fr;
+  display: grid;
+  grid-template-areas:
+    "side-left header side-right"
+    "sidebar-left content sidebar-right";
+
+  @include mq(md) {
+    grid-template-columns: 1fr 5fr 1fr;
+  }
+
+  @include mq(lg) {
+    grid-template-columns: 2fr 6fr 2fr;
+  }
+
+  @include mq(xl) {
+    grid-template-columns: 3fr 5fr 3fr;
+  }
+}
+
+.header {
+  grid-area: 1/2/2/4;
+}
+
+.content {
+  grid-area: content;
+  display: flex;
+  flex-direction: column;
+  grid-row-gap: 3rem;
+  margin-top: 2rem;
+  padding-bottom: 3rem;
+}
